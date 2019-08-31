@@ -15,7 +15,7 @@ class YC:
         except KeyError:
             print ("\033[31m[\033[31m!\033[31m] \033[39mLogin Gagal")
             sys.exit()
-        self.__looping(json.loads(requests.get(f"https://graph.facebook.com/me/friends?access_token={self.token}").text))
+        self.__looping(json.loads(requests.get("https://graph.facebook.com/me/friends?access_token={self.token}").text))
     def __looping(self, dataFL):
         br = mechanize.Browser()
         br.set_handle_robots(False)
@@ -60,7 +60,7 @@ class YC:
             "password":self.pw,
             "return_ssl_resources":"0",
             "v":"1.0"}
-        sig = (f'api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail={self.email}format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword={self.pw}return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32').encode('utf-8')
+        sig = ('api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail={self.email}format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword={self.pw}return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32').encode('utf-8')
         x = hashlib.new('md5')
         x.update(sig)
         data.update({
